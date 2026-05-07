@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #2d3436; background-color: #f9f9f9; margin: 0; padding: 0; }
+        .container { max-width: 600px; margin: 40px auto; padding: 0; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background-color: #ffffff; }
+        .header { background: linear-gradient(135deg, #ff7675, #fab1a0); color: white; padding: 40px 20px; text-align: center; }
+        .header h1 { margin: 0; font-size: 28px; font-weight: 700; }
+        .content { padding: 40px; }
+        .content p { margin-bottom: 20px; font-size: 16px; }
+        .learning-resources { background-color: #fff9c4; padding: 25px; border-radius: 12px; margin: 30px 0; border-left: 5px solid #fdcb6e; }
+        .learning-resources h3 { margin-top: 0; color: #d35400; font-size: 18px; }
+        .resource-item { margin-bottom: 20px; list-style: none; }
+        .resource-title { font-weight: 700; color: #e67e22; display: block; margin-bottom: 5px; font-size: 17px; }
+        .resource-reason { font-size: 14px; color: #636e72; margin-bottom: 10px; font-style: italic; }
+        .course-link { display: inline-block; color: #0984e3; text-decoration: none; font-weight: 600; border-bottom: 1px solid #0984e3; transition: all 0.2s; }
+        .course-link:hover { color: #74b9ff; border-bottom-color: #74b9ff; }
+        .footer { background-color: #f1f2f6; font-size: 12px; color: #636e72; text-align: center; padding: 20px; }
+        .highlight { font-weight: 700; color: #2d3436; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Application Update</h1>
+        </div>
+        <div class="content">
+            <p>Dear <span class="highlight">{{ first_name }}</span>,</p>
+            <p>Thank you for your interest in the <span class="highlight">{{ job_title }}</span> position at Smart Recruitment.</p>
+            <p>We appreciate the time you took to share your background and skills with us. After careful consideration, we have decided to move forward with other candidates who more closely align with our current requirements at this time.</p>
+            
+            {% if learning_resources %}
+            <div class="learning-resources">
+                <h3>Feedback & Career Growth</h3>
+                <p>To support your professional journey, our AI has identified a few areas where you can strengthen your profile for future opportunities:</p>
+                <ul style="padding-left: 0;">
+                    {% for item in learning_resources %}
+                    <li class="resource-item">
+                        <span class="resource-title">{{ item.skill }}</span>
+                        {% if item.reason %}
+                        <div class="resource-reason">{{ item.reason }}</div>
+                        {% endif %}
+                        <div class="courses">
+                            {% for course in item.courses %}
+                            <a href="{{ course.url }}" class="course-link" target="_blank">{{ course.title }}</a>
+                            {% endfor %}
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            
+            <p>We will keep your profile in our talent pool and reach out if a relevant opportunity arises. We wish you the very best in your career pursuits.</p>
+            <p>Best regards,<br><strong>The Hiring Team</strong></p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2026 Smart Recruitment System. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

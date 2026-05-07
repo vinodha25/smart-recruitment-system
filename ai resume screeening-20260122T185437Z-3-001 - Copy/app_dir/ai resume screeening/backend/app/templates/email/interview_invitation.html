@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { width: 80%; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; }
+        .header { background-color: #2196F3; color: white; padding: 10px; text-align: center; border-radius: 10px 10px 0 0; }
+        .content { padding: 20px; }
+        .footer { font-size: 0.8em; color: #777; text-align: center; margin-top: 20px; }
+        .highlight { background-color: #e3f2fd; padding: 10px; border-left: 5px solid #2196F3; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Interview Invitation</h2>
+        </div>
+        <div class="content">
+            <p>Dear {{ first_name }},</p>
+            <p>We are pleased to invite you to an interview for the <strong>{{ job_title }}</strong> position.</p>
+            <p>Your interview has been scheduled for:</p>
+            <div class="highlight">
+                <strong>Date & Time:</strong> {{ scheduled_date }}<br>
+                <strong>Meeting Link:</strong> <a href="{{ meet_link }}">{{ meet_link }}</a>
+            </div>
+            <p>Please ensure you are in a quiet environment and have a stable internet connection. If you need to reschedule, please let us know as soon as possible.</p>
+            <p>Best regards,<br>The Hiring Team</p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2026 Smart Recruitment System. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

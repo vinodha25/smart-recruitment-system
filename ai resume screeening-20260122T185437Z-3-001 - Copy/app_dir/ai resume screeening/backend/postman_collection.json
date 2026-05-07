@@ -1,0 +1,571 @@
+{
+    "info": {
+        "name": "AI Hiring System API",
+        "description": "Complete API collection for AI-Based Hiring System",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:8000",
+            "type": "string"
+        },
+        {
+            "key": "token",
+            "value": "",
+            "type": "string"
+        }
+    ],
+    "item": [
+        {
+            "name": "1. Authentication",
+            "item": [
+                {
+                    "name": "Register User",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": "{{base_url}}/api/auth/register",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"email\": \"recruiter@test.com\",\n  \"password\": \"test123\",\n  \"full_name\": \"Test Recruiter\",\n  \"role\": \"recruiter\",\n  \"department\": \"HR\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Login",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "var jsonData = pm.response.json();",
+                                    "pm.environment.set(\"token\", jsonData.access_token);"
+                                ]
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": "{{base_url}}/api/auth/login",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"email\": \"admin@hiring.com\",\n  \"password\": \"admin123\"\n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "2. Jobs",
+            "item": [
+                {
+                    "name": "Create Job",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": "{{base_url}}/api/jobs",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"title\": \"Frontend Developer\",\n  \"department\": \"Engineering\",\n  \"location\": \"Remote\",\n  \"job_type\": \"full-time\",\n  \"experience_level\": \"mid\",\n  \"salary_min\": 60000,\n  \"salary_max\": 90000,\n  \"description\": \"Looking for a skilled frontend developer\",\n  \"requirements\": \"3+ years React experience\",\n  \"required_skills\": [\"React\", \"JavaScript\", \"HTML\", \"CSS\"],\n  \"preferred_skills\": [\"TypeScript\", \"Next.js\"],\n  \"min_experience_years\": 3,\n  \"education_requirement\": \"Bachelor's degree\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Get All Jobs",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{base_url}}/api/jobs"
+                    }
+                },
+                {
+                    "name": "Get Job by ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{base_url}}/api/jobs/1"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "3. Candidates",
+            "item": [
+                {
+                    "name": "Add Candidate (Manual)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": "{{base_url}}/api/candidates",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"job_id\": 1,\n  \"first_name\": \"Arun\",\n  \"last_name\": \"Kumar\",\n  \"email\": \"arun@test.com\",\n  \"phone\": \"+91-9876543210\",\n  \"location\": \"Bangalore\",\n  \"source\": \"manual\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Upload Resume",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": "{{base_url}}/api/candidates/upload-resume",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "job_id",
+                                    "value": "1",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "first_name",
+                                    "value": "Priya",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "last_name",
+                                    "value": "Sharma",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "priya@test.com",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "phone",
+                                    "value": "+91-9876543211",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "resume",
+                                    "type": "file",
+                                    "src": ""
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get All Candidates",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{base_url}}/api/candidates?job_id=1"
+                    }
+                },
+                {
+                    "name": "Get Candidate Details",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{base_url}}/api/candidates/1"
+                    }
+                },
+                {
+                    "name": "Screen Candidate",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": "{{base_url}}/api/candidates/1/screen"
+                    }
+                },
+                {
+                    "name": "Update Candidate Status",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": "{{base_url}}/api/candidates/1",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"status\": \"shortlisted\",\n  \"notes\": \"Good candidate, proceed to interview\"\n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "4. Screening",
+            "item": [
+                {
+                    "name": "Get Screening Results",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{base_url}}/api/screening/results?job_id=1"
+                    }
+                },
+                {
+                    "name": "Get Screening Stats",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{base_url}}/api/screening/stats?job_id=1"
+                    }
+                },
+                {
+                    "name": "Batch Screen Candidates",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": "{{base_url}}/api/screening/batch-screen?job_id=1"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "5. HR Rules",
+            "item": [
+                {
+                    "name": "Create HR Rule",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": "{{base_url}}/api/hr-rules",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"rule_text\": \"Remove Python candidates\",\n  \"rule_type\": \"filter\",\n  \"is_temporary\": true,\n  \"job_id\": 1\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Get All HR Rules",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{base_url}}/api/hr-rules?job_id=1"
+                    }
+                },
+                {
+                    "name": "Preview Rule Impact",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": "{{base_url}}/api/hr-rules/preview?rule_text=Only consider candidates with 5+ years experience&job_id=1"
+                    }
+                },
+                {
+                    "name": "Apply HR Rules",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": "{{base_url}}/api/screening/apply-rules?job_id=1"
+                    }
+                },
+                {
+                    "name": "Toggle Rule",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": "{{base_url}}/api/hr-rules/1/toggle"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "6. Hiring Decisions",
+            "item": [
+                {
+                    "name": "Make Decision (Accept)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": "{{base_url}}/api/decisions",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"candidate_id\": 1,\n  \"decision\": \"accept\",\n  \"reason\": \"Strong technical skills and cultural fit\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Make Decision (Reject)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": "{{base_url}}/api/decisions",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"candidate_id\": 2,\n  \"decision\": \"reject\",\n  \"reason\": \"Insufficient experience in required technologies\",\n  \"override_reason\": \"HR decision based on team needs\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Get All Decisions",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{base_url}}/api/decisions"
+                    }
+                },
+                {
+                    "name": "Get Decision Stats",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{base_url}}/api/decisions/stats/summary?job_id=1"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "7. AI Insights (Optional)",
+            "item": [
+                {
+                    "name": "Generate Explanation",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": "{{base_url}}/api/ai/explain/1"
+                    }
+                },
+                {
+                    "name": "Generate Learning Path",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": "{{base_url}}/api/ai/learning-path/1"
+                    }
+                },
+                {
+                    "name": "Predict Success",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": "{{base_url}}/api/ai/success-prediction/1"
+                    }
+                },
+                {
+                    "name": "Team Compatibility",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": "{{base_url}}/api/ai/team-compatibility/1?team_id=engineering"
+                    }
+                },
+                {
+                    "name": "Career Path Simulation",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": "{{base_url}}/api/ai/career-path/1"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "8. AI Configuration",
+            "item": [
+                {
+                    "name": "Get AI Config",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": "{{base_url}}/api/ai/config"
+                    }
+                },
+                {
+                    "name": "Update AI Config",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": "{{base_url}}/api/ai/config",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"api_key\": \"your-gemini-api-key\",\n  \"enable_skill_explanation\": true,\n  \"enable_learning_recommendation\": true,\n  \"enable_post_hire_prediction\": false,\n  \"enable_team_compatibility\": false,\n  \"enable_career_simulation\": false,\n  \"temperature\": 0.7,\n  \"max_tokens\": 2048\n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "9. Interviews",
+            "item": [
+                {
+                    "name": "Schedule Interview",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": "{{base_url}}/api/interviews",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"candidate_id\": 1,\n  \"interview_type\": \"technical\",\n  \"scheduled_at\": \"2026-01-25T10:00:00\",\n  \"duration_minutes\": 60,\n  \"location\": \"Google Meet Link\",\n  \"interviewer_ids\": [1]\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Get Interviews",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{base_url}}/api/interviews?candidate_id=1"
+                    }
+                },
+                {
+                    "name": "Update Interview Feedback",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": "{{base_url}}/api/interviews/1",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"status\": \"completed\",\n  \"feedback\": \"Strong technical skills, good problem-solving\",\n  \"rating\": 4.5,\n  \"technical_score\": 85,\n  \"communication_score\": 90,\n  \"cultural_fit_score\": 88\n}"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

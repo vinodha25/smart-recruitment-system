@@ -1,0 +1,2 @@
+AI Toggles: SE=True, LR=True, PH=True, TC=True, CS=True
+Error: 'skill' is an invalid keyword argument for LearningPath

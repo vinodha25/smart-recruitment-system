@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "C:\Users\ELCOT\Downloads\ai resume screeening-20260122T185437Z-3-001 - Copy\app_dir\ai resume screeening\backend\force_activate_ai.py", line 1, in <module>
+    from app.database import SessionLocal
+  File "C:\Users\ELCOT\Downloads\ai resume screeening-20260122T185437Z-3-001 - Copy\app_dir\ai resume screeening\backend\app\database.py", line 2, in <module>
+    from sqlalchemy import create_engine
+ModuleNotFoundError: No module named 'sqlalchemy'
