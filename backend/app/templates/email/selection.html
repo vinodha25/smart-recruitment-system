@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #2d3436; background-color: #f9f9f9; margin: 0; padding: 0; }
+        .container { max-width: 600px; margin: 40px auto; padding: 0; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background-color: #ffffff; }
+        .header { background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; padding: 40px 20px; text-align: center; }
+        .header h1 { margin: 0; font-size: 28px; font-weight: 700; letter-spacing: 1px; }
+        .content { padding: 40px; }
+        .content p { margin-bottom: 20px; font-size: 16px; }
+        .highlight { color: #6c5ce7; font-weight: 700; }
+        .footer { background-color: #f1f2f6; font-size: 12px; color: #636e72; text-align: center; padding: 20px; }
+        .button { display: inline-block; padding: 14px 30px; background-color: #6c5ce7; color: white !important; text-decoration: none; border-radius: 8px; font-weight: 600; margin-top: 10px; transition: background-color 0.3s ease; }
+        .brand { font-weight: 800; color: #2d3436; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Congratulations!</h1>
+        </div>
+        <div class="content">
+            <p>Dear <span class="highlight">{{ first_name }}</span>,</p>
+            <p>We are absolutely thrilled to inform you that you have been selected for the <span class="highlight">{{ job_title }}</span> position!</p>
+            <p>Our team was exceptionally impressed with your recruitment profile, your technical background, and the unique skills you bring to the table. We believe you will be a fantastic addition to the <span class="brand">Smart Recruitment</span> team.</p>
+            <p>We will follow up shortly with your official offer letter and the next steps for your onboarding journey. In the meantime, if you have any immediate questions, please don't hesitate to reach out.</p>
+            <p>Welcome aboard!</p>
+            <p>Best regards,<br><strong>The Hiring Team</strong></p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2026 Smart Recruitment System. All rights reserved.</p>
+            <p>Designed for excellence in hiring.</p>
+        </div>
+    </div>
+</body>
+</html>

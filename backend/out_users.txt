@@ -1,0 +1,11 @@
+﻿ID    Email                          Full Name                 Role      
+---------------------------------------------------------------------------
+1     user@example.com               string                    UserRole.RECRUITER
+2     demo3@hireai.com               Demo 3 User               UserRole.HR
+3     testuser@hireai.com            Test User                 UserRole.HR
+4     test@hireai.com                Demo Recruiter            UserRole.RECRUITER
+5     hr@example.com                 Sarah Recruiter           UserRole.RECRUITER
+6     hr@company.co                  Demo Recruiter            UserRole.RECRUITER
+7     test@example.com               Demo Recruiter            UserRole.RECRUITER
+8     admin@hiring.com               Demo Recruiter            UserRole.RECRUITER
+9     ishur3894@gmail.com            Demo Recruiter            UserRole.RECRUITER
