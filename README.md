@@ -1,73 +1,183 @@
-# Welcome to your Lovable project
+# AI Resume Screening System
 
-## Project info
+An AI-powered recruitment web application designed to simplify resume screening, candidate evaluation, and recruitment workflow management.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Live Demo
 
-## How can I edit this code?
+**Frontend:** https://smartrecruitmentsystem.netlify.app/
 
-There are several ways of editing your application.
+**Backend API:** https://ai-resume-screening-backend-xtom.onrender.com
 
-**Use Lovable**
+**API Documentation:** https://ai-resume-screening-backend-xtom.onrender.com/docs
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## GitHub Repository
 
-Changes made via Lovable will be committed automatically to this repo.
+https://github.com/vinodha25/smart-recruitment-system
 
-**Use your preferred IDE**
+## Project Overview
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+The AI Resume Screening System is a full-stack web application designed to help recruiters manage job openings, screen candidate resumes, evaluate qualifications, and organize recruitment activities through a centralized dashboard.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+The application combines resume parsing, candidate information extraction, skills and experience analysis, ATS-based scoring, and AI-powered evaluation to support the initial stages of recruitment.
 
-Follow these steps:
+## Key Features
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+* Resume Upload and Parsing
+* Candidate Information Extraction
+* Candidate Name and Contact Information Extraction
+* Skill and Experience Analysis
+* ATS-based Candidate Scoring
+* AI-powered Candidate Evaluation
+* Candidate Recommendations
+* Job Creation and Management
+* Candidate Management
+* Interview Management
+* Recruitment Workflow Management
+* Hiring Dashboard and Insights
+* Candidate Status Tracking
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Technologies Used
 
-# Step 3: Install the necessary dependencies.
-npm i
+### Frontend
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+* React
+* TypeScript
+* JavaScript
+* Vite
+* Tailwind CSS
+* shadcn/ui
+
+### Backend
+
+* Python
+* FastAPI
+* SQLAlchemy
+* SQL
+* AI/ML
+
+### Tools and Deployment
+
+* Git
+* GitHub
+* VS Code
+* Netlify
+* Render
+
+## Project Structure
+
+AI Resume Screening System
+│
+├── backend/
+│   ├── app/
+│   │   ├── routers/
+│   │   ├── services/
+│   │   ├── templates/
+│   │   ├── config.py
+│   │   ├── database.py
+│   │   └── main.py
+│   ├── requirements.txt
+│   └── runtime.txt
+│
+├── public/
+├── src/
+├── package.json
+├── index.html
+├── vite.config.ts
+├── .gitignore
+└── README.md
 ```
 
-**Edit a file directly in GitHub**
+## Recruitment Workflow
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+1. The recruiter creates a job opening.
+2. Candidate resumes are uploaded to the system.
+3. Resume content is parsed to extract candidate information.
+4. Candidate skills and experience are analyzed.
+5. An ATS-based score is calculated.
+6. AI evaluates the candidate's profile against job requirements.
+7. Candidates are categorized for recommendation, review, or rejection.
+8. Recruiters manage candidate records and recruitment activities through the dashboard.
 
-**Use GitHub Codespaces**
+## Objective
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+The main objective of this project is to reduce manual effort in resume screening and help recruiters evaluate candidates more efficiently using automated resume analysis, skill matching, and AI-assisted recommendations.
 
-## What technologies are used for this project?
+## Project Contributors
 
-This project is built with:
+### Vinodha
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+* Debugging and resolving application errors
+* Frontend-backend integration support
+* Deployment configuration and environment setup
+* Frontend deployment and configuration using Netlify
+* Backend deployment and configuration using Render
+* Bringing the application live and verifying deployment functionality
 
-## How can I deploy this project?
+### Ishwarya Lakshmi
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+* Application testing
+* Error identification and debugging support
+* Deployment configuration and environment setup
+* Testing application features and workflows
 
-## Can I connect a custom domain to my Lovable project?
+### Development Support
 
-Yes, you can!
+Initial application development and implementation were carried out with additional development support.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## Deployment
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+### Frontend
+
+The frontend is deployed on Netlify.
+
+Live URL: https://smartrecruitmentsystem.netlify.app/
+
+Frontend deployment and configuration were handled by Vinodha.
+
+### Backend
+
+The backend API is deployed on Render.
+
+API URL: https://ai-resume-screening-backend-xtom.onrender.com
+
+API Documentation: https://ai-resume-screening-backend-xtom.onrender.com/docs
+
+Backend deployment and configuration were handled by Vinodha.
+
+### Environment Configuration
+
+The application uses environment variables to configure backend services and external integrations. Sensitive credentials and API keys should be stored securely and must not be committed to the public repository.
+
+## Learning Outcomes
+
+Through this project, we gained practical experience in:
+
+* Web application development and implementation
+* Frontend-backend integration
+* REST API usage and development
+* Application testing and debugging
+* Resume screening workflow implementation
+* Database integration
+* AI integration
+* Git and GitHub version control
+* Environment configuration
+* Cloud deployment
+* Deploying and maintaining a live web application
+
+## Future Enhancements
+
+* Improved resume parsing accuracy
+* Enhanced candidate-job matching
+* More detailed recruitment analytics
+* Improved mobile responsiveness
+* Additional recruitment workflow automation
+
+## License
+
+This project was developed for educational and portfolio purposes.
+
+## Contact
+
+**Vinodha**
+
+GitHub: https://github.com/vinodha25
